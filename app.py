@@ -77,6 +77,8 @@ if __name__ == "__main__":
         engine = db.get_engine()
         Base.metadata.create_all(engine)
 
-        admin = User( username="admin", password="admin123", is_admin=True)
-
     app.run(debug=True)
+
+# To launch: python3 app.py
+# To access database: sqlite3 instance/db.sqlite3
+#    Ex: SELECT * FROM user;
