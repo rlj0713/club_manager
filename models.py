@@ -29,6 +29,7 @@ class User(Base):
     __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(primary_key = True)
+    name: Mapped[str]
     username: Mapped[str] = mapped_column(String(50), unique=True)
     password: Mapped[str]
     is_admin: Mapped[bool]
@@ -48,6 +49,7 @@ class Event(Base):
     __tablename__ = "event"
 
     id: Mapped[int] = mapped_column(primary_key = True)
+    name: Mapped[str]
     date: Mapped[datetime] = mapped_column(default=datetime.now)
     location: Mapped[str]
     creator_id: Mapped[int] = mapped_column(ForeignKey("user.id"))

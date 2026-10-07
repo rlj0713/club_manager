@@ -9,10 +9,22 @@ clubs_bp = Blueprint("clubs", __name__)
 def get_clubs():
     clubs = db.session.scalars(select(Club)).all()
 
-    return [
-        {
-            "id": club.id,
-            "name": club.name
-        }
-        for club in clubs
-    ]
+    json_data = []
+    
+    for club in clubs:
+        members = []
+        for member in club.members:
+            members.append(member.username)
+        events = []
+        for event in club.events:
+            events.append(event.name)
+        json_data.append(
+            {
+                'id': club.id,
+                'name': club.name,
+                'members': members,
+                'events': events
+            }
+        )
+
+    return json_data

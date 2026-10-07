@@ -1,8 +1,7 @@
 from datetime import datetime
 
-from app import app, db
-from app import Base
-from app import User, Club, Event
+from app import app
+from models import db, Base, User, Club, Event
 
 with app.app_context():
     try:
@@ -12,18 +11,21 @@ with app.app_context():
         
         # Create users
         admin = User(
+            name="admin",
             username="admin",
             password="admin123",
             is_admin=True
         )
 
         alice = User(
+            name="alice",
             username="alice",
             password="alice123",
             is_admin=False
         )
 
         bob = User(
+            name="bob",
             username="bob",
             password="bob123",
             is_admin=False
@@ -39,6 +41,7 @@ with app.app_context():
 
         # Create events
         tournament = Event(
+            name="Tournament",
             date=datetime(2026, 10, 15, 15, 30),
             location="Room 104",
             creator=admin,
@@ -47,6 +50,7 @@ with app.app_context():
         )
 
         workshop = Event(
+            name="Workshop",
             date=datetime(2026, 10, 22, 15, 30),
             location="Library",
             creator=admin,
@@ -71,3 +75,4 @@ with app.app_context():
         db.session.rollback()
         print("Database seed failed.")
         print(f"Error: {e}")
+        raise

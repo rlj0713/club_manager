@@ -4,6 +4,7 @@
 from flask import Flask
 from models import db, Base
 from routes.clubs import clubs_bp
+from routes.events import events_bp
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_ENGINES"] = {"default": "sqlite:///db.sqlite3"}
@@ -11,6 +12,7 @@ app.config["SQLALCHEMY_ENGINES"] = {"default": "sqlite:///db.sqlite3"}
 db.init_app(app)
 
 app.register_blueprint(clubs_bp)
+app.register_blueprint(events_bp)
 
 
 if __name__ == "__main__":
