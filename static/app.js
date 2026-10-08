@@ -152,7 +152,6 @@ function renderDashboard() {
         </a>`).join("")}</div>` : "<p>You do not belong to any clubs yet.</p>"}
       ${state.user.is_admin ? `<div class="actions dashboard-actions">
         <a href="/clubs">Add club</a>
-        <a href="/events">Create event</a>
       </div>` : ""}
       <div class="calendar-nav">
         <button type="button" data-calendar-month="-1" aria-label="Previous month">&larr;</button>
