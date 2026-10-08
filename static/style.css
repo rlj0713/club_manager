@@ -33,6 +33,10 @@ input, select { border: 1px solid #b9c2ca; border-radius: 4px; padding: .55rem; 
 .club-card h3 { margin: 0 0 .15rem; }
 .club-card p { margin: 0; }
 .club-card .actions { margin: .5rem 0 0; }
+.club-event-list { display: grid; gap: .35rem; padding: 0; list-style: none; }
+.club-event-link { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .4rem .55rem; color: #1d2733; background: #f8fafc; border: 1px solid #d9e0e7; }
+.club-event-link span { color: #687582; font-size: .85rem; white-space: nowrap; }
+.club-event-link:hover { background: #eaf1f8; border-color: #1769aa; }
 .dashboard-actions { margin: .75rem 0; }
 .calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid #d9e0e7; border-radius: 8px; overflow: hidden; }
 .calendar-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; }

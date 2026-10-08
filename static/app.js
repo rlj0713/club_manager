@@ -96,6 +96,16 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/"/g, "&quot;");
 }
 
+function formatEventDate(value) {
+  return new Intl.DateTimeFormat(undefined, {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(value));
+}
+
 function calendarView(events, calendarMonth) {
   const year = calendarMonth.getFullYear();
   const month = calendarMonth.getMonth();
@@ -233,7 +243,7 @@ async function clubDetailView(clubId) {
     $("#view").innerHTML = `<div class="card"><h2>${escapeHtml(club.name)}</h2>
       <p>Members: ${club.members.map(escapeHtml).join(", ") || "None"}</p>
       <h3>Events</h3>
-      <ul>${club.events.map(event => `<li><a href="/events/${event.id}">${escapeHtml(event.name)}</a></li>`).join("") || "<li>No events</li>"}</ul>
+      <ul class="club-event-list">${club.events.map(event => `<li><a class="club-event-link" href="/events/${event.id}"><strong>${escapeHtml(event.name)}</strong><span>${formatEventDate(event.date)}</span></a></li>`).join("") || "<li>No events</li>"}</ul>
       ${state.user.is_admin ? `<h3>Admin controls</h3>
         <form id="club-name-form" class="form">
           <label>Club name <input name="name" value="${escapeAttribute(club.name)}" required></label>
