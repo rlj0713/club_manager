@@ -1,4 +1,5 @@
 from datetime import datetime
+import bcrypt
 from flask_sqlalchemy_lite import SQLAlchemy
 from sqlalchemy import String, ForeignKey, Table, Column
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -31,11 +32,29 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key = True)
     name: Mapped[str]
     username: Mapped[str] = mapped_column(String(50), unique=True)
-    password: Mapped[str]
+    _password: Mapped[str] = mapped_column("password", String(60))
     is_admin: Mapped[bool]
     clubs: Mapped[list["Club"]] = relationship( secondary="club_membership", back_populates="members")
     events: Mapped[list["Event"]] = relationship(back_populates="creator")
     events_attending: Mapped[list["Event"]] = relationship(secondary="event_attendee", back_populates="attendees")
+
+    @property
+    def password(self) -> str:
+        return self._password
+
+    @password.setter
+    def password(self, value: str) -> None:
+        self.set_password(value)
+
+    def set_password(self, password: str) -> None:
+        self._password = bcrypt.hashpw(
+            password.encode("utf-8"), bcrypt.gensalt()
+        ).decode("utf-8")
+
+    def check_password(self, password: str) -> bool:
+        return bcrypt.checkpw(
+            password.encode("utf-8"), self._password.encode("utf-8")
+        )
 
 class Club(Base):
     __tablename__ = "club"

@@ -93,3 +93,28 @@ def delete_club(club_id):
         "message": "Club deleted",
         "id": club_id
     }
+
+
+
+# Example web requests to test all functionality:
+
+# GET
+# curl http://localhost:5000/api/clubs
+# OR
+# curl http://localhost:5000/api/clubs/1
+
+
+# CREATE (POST)
+# curl -X POST http://localhost:5000/api/clubs \
+#   -H "Content-Type: application/json" \
+#   -d '{"name":"Drama Club"}'
+
+
+# UPDATE (PUT)
+# curl -X PUT http://localhost:5000/api/clubs/3 \
+#   -H "Content-Type: application/json" \
+#   -d '{"name":"Advanced Drama Club"}'
+
+
+# DELETE
+# curl -X DELETE http://localhost:5000/api/clubs/3
