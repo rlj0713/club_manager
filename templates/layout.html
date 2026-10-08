@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Club Manager{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="{% block page %}profile{% endblock %}">
+  <header class="site-toolbar">
+    <a class="brand" href="/">Club Manager</a>
+    <section id="app-panel" class="toolbar-content hidden">
+      <nav class="toolbar">
+        <a href="/">Dashboard</a>
+        <a href="/users/" id="profile-link">Profile</a>
+        <button id="logout-button" class="secondary">Log out</button>
+      </nav>
+    </section>
+  </header>
+  <section id="session-status" class="session-status hidden">
+    <p id="current-user" class="signed-in"></p>
+  </section>
+  <main class="shell">
+    <header class="page-header">
+      <p id="message" class="message" role="status"></p>
+    </header>
+
+    <section id="auth-panel" class="card">
+      <div class="tabs">
+        <button class="tab active" data-auth-tab="login">Log in</button>
+        <button class="tab" data-auth-tab="register">Register</button>
+      </div>
+      <form id="login-form" class="form">
+        <label>Username <input name="username" required></label>
+        <label>Password <input name="password" type="password" required></label>
+        <button type="submit">Log in</button>
+      </form>
+      <form id="register-form" class="form hidden">
+        <label>Name <input name="name" required></label>
+        <label>Username <input name="username" required maxlength="50"></label>
+        <label>Email <input name="email" type="email" required></label>
+        <label>Password <input name="password" type="password" required></label>
+        <button type="submit">Create account</button>
+      </form>
+    </section>
+
+    <section id="content-panel">
+      <section id="view"></section>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

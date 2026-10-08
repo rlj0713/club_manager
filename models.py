@@ -32,6 +32,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key = True)
     name: Mapped[str]
     username: Mapped[str] = mapped_column(String(50), unique=True)
+    email: Mapped[str] = mapped_column(String(255), unique=True)
     _password: Mapped[str] = mapped_column("password", String(60))
     is_admin: Mapped[bool]
     clubs: Mapped[list["Club"]] = relationship( secondary="club_membership", back_populates="members")

@@ -12,6 +12,7 @@ with app.app_context():
         # Create users
         admin = User(
             name="admin",
+            email="admin@example.com",
             username="admin",
             password="admin123",
             is_admin=True
@@ -19,6 +20,7 @@ with app.app_context():
 
         alice = User(
             name="alice",
+            email="alice@example.com",
             username="alice",
             password="alice123",
             is_admin=False
@@ -26,6 +28,7 @@ with app.app_context():
 
         bob = User(
             name="bob",
+            email="bob@example.com",
             username="bob",
             password="bob123",
             is_admin=False

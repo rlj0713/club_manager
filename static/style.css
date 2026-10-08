@@ -1,0 +1,48 @@
+:root { font-family: system-ui, sans-serif; color: #1d2733; background: #f3f5f7; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+body[data-page="dashboard"] .shell { padding-top: 12px; }
+h1 { margin-bottom: .25rem; }
+.site-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; padding: .75rem max(1rem, calc((100vw - 900px) / 2)); background: #1d2733; }
+.brand { padding: 0; background: transparent; color: white; font-size: 1.25rem; font-weight: 700; }
+.toolbar-content { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; flex-wrap: wrap; margin-left: auto; }
+.session-status { width: 100%; padding: .35rem max(1rem, calc((100vw - 900px) / 2)); background: #e5e7eb; }
+.card, .item { background: white; border: 1px solid #d9e0e7; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+.toolbar, .tabs, .actions { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0; }
+.site-toolbar .toolbar { margin: 0; }
+button, a { border: 0; border-radius: 5px; padding: .55rem .8rem; color: white; background: #1769aa; cursor: pointer; text-decoration: none; }
+button.secondary { background: #687582; }
+button.danger { background: #b42318; }
+button.tab { background: #aab4bd; }
+button.tab.active { background: #1769aa; }
+.form { display: grid; gap: .8rem; max-width: 420px; }
+label { display: grid; gap: .25rem; font-weight: 600; }
+input, select { border: 1px solid #b9c2ca; border-radius: 4px; padding: .55rem; font: inherit; }
+.message { min-height: 1.4em; color: #1769aa; }
+.message:empty { display: none; }
+.error { color: #b42318; }
+.muted { color: #687582; }
+.signed-in { margin: 0; color: #6b7280; font-size: .9rem; }
+.hidden { display: none !important; }
+.item h3 { margin-top: 0; }
+.inline { display: flex; gap: .5rem; align-items: end; flex-wrap: wrap; }
+.club-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .5rem; }
+.club-card { display: block; border: 1px solid #d9e0e7; border-left: 6px solid var(--club-color); border-radius: 8px; margin: 0; padding: .5rem .75rem; color: #1d2733; background: white; }
+.club-card:hover { background: #f8fafc; border-color: var(--club-color); }
+.club-card h3 { margin: 0 0 .15rem; }
+.club-card p { margin: 0; }
+.club-card .actions { margin: .5rem 0 0; }
+.dashboard-actions { margin: .75rem 0; }
+.calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid #d9e0e7; border-radius: 8px; overflow: hidden; }
+.calendar-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.calendar-nav h2 { margin: 0; text-align: center; }
+.calendar-heading, .calendar-day { padding: .5rem; border-right: 1px solid #d9e0e7; border-bottom: 1px solid #d9e0e7; }
+.calendar-heading { background: #eaf1f8; font-weight: 700; text-align: center; }
+.calendar-day { min-height: 7rem; background: white; }
+.calendar-day:nth-child(7n) { border-right: 0; }
+.calendar-day.empty { background: #f7f8f9; }
+.calendar-date { font-weight: 700; }
+.calendar-event { display: block; width: 100%; border-left: 5px solid var(--club-color); color: #1d2733; background: #f8fafc; margin-top: .35rem; padding: .2rem; font-size: .8rem; text-align: left; }
+@media (max-width: 600px) { .calendar-day { min-height: 5.5rem; padding: .3rem; } .calendar-event { font-size: .7rem; } }
+@media (max-width: 700px) { .site-toolbar { align-items: flex-start; flex-direction: column; } .toolbar-content { justify-content: flex-start; margin-left: 0; } }
